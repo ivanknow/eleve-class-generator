@@ -51,6 +51,7 @@ class ConversorPHPSearch {
 	//Construtor
 	$result .= $this->geraConstrutor();
 	
+	$result .= "\n}";
 	return $result;
 	}	
 	public function geraAttr(){
