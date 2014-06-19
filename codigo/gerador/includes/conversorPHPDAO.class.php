@@ -37,7 +37,7 @@ class ConversorDAOPHP {
 		
 		
 		$result .= "\n".' $this->setConn '." = new ConnectionMysql();\n";
-		$result .= "\n".'$this->setTableName(\"'.$this->tabela.'\");'."\n";
+		$result .= "\n".'$this->setTableName("'.$this->tabela.'");'."\n";
 		
 		$result .= "\n}\n";
 		
@@ -51,7 +51,7 @@ class ConversorDAOPHP {
 	$result = "";
 	
 	
-	$result .= "\nclass ".$this->classe."DAO";
+	$result .= "\nclass ".$this->classe."DAO extends AbstractDAO";
 	
 	
 	$result .= "{\n";
@@ -128,14 +128,14 @@ class ConversorDAOPHP {
 
 	foreach ($this->metodos as $value) {
 
-		$result .= "\npublic function ".$value.'($obj){\n';
+		$result .= "\npublic function ".$value.'($obj){'."\n";
 		
 		switch ($value) {
 			case "validarTipo":
-				$result .=	'return $obj instanceof '.$this->classe.'\n';
+				$result .=	'return $obj instanceof '.$this->classe."\n";
 			break;
 			case "validarTipoPesquisa":
-				$result .=	'return $obj instanceof '.$this->classe.'Pesquisa\n';
+				$result .=	'return $obj instanceof '.$this->classe."Pesquisa\n";
 			break;
 			default:
 				$result .="\n //TODO \n";
