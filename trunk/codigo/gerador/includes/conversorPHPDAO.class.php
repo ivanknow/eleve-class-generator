@@ -36,7 +36,7 @@ class ConversorDAOPHP {
 			//$result .= "\n".' $this->conn '." = new CONEXAO();\n";
 		
 		
-		$result .= "\n".' $this->setConn '." = new ConnectionMysql();\n";
+		$result .= "\n".' $this->setConn( '."new ConnectionMysql());\n";
 		$result .= "\n".'$this->setTableName("'.$this->tabela.'");'."\n";
 		
 		$result .= "\n}\n";
@@ -132,10 +132,10 @@ class ConversorDAOPHP {
 		
 		switch ($value) {
 			case "validarTipo":
-				$result .=	'return $obj instanceof '.$this->classe."\n";
+				$result .=	'return $obj instanceof '.$this->classe.";\n";
 			break;
 			case "validarTipoPesquisa":
-				$result .=	'return $obj instanceof '.$this->classe."Pesquisa\n";
+				$result .=	'return $obj instanceof '.$this->classe."Pesquisa;\n";
 			break;
 			default:
 				$result .="\n //TODO \n";
