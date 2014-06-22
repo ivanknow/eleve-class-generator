@@ -40,7 +40,7 @@ class ConversorPHPSearch {
 	$result = "";
 	
 	
-	$result .= "\nclass ".$this->classe;
+	$result .= "\nclass ".$this->classe."Pesquisa";
 	
 		$result .= " extends ObjetoSerializavel";
 	
