@@ -121,20 +121,18 @@ class ConversorPHPEleve {
 		if($this->construtorArray){
 		$result .= "\npublic".' static function construct($array){';
 		
-		$result .="\nreturn new ".$this->classe."(";
+		$result .="\n".'$obj'." = new ".$this->classe."();\n";
 		
 		foreach ($this->atributosNome as $value) {
 
-		$result .= ' $array[\''.$value."'],";
+		$result .= '$obj->set'.ucfirst($value).'( $array[\''.$value."']);\n";
 		
 		}
 		if(count($this->atributosNome)){
 		$result = substr_replace($result,'', -1);
 		}
 		
-		
-		
-		$result .=");\n";
+		$result .="\nreturn ".'$obj'.";\n";
 		
 		$result .= "\n}\n";
 		
