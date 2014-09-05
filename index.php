@@ -101,7 +101,7 @@ $(function(){
 	<label>DAO: <input type="checkbox" name="DAOPHP" value="true"/> </label>
 	<label>Nome da tabela:<input type="text" name="tabela" value=""/> </label>
 	 </div>
-	<label>Classe Pai:</label> <input type="text" name="classePai"/>
+	<label>Classe Pai:</label> <input type="text" name="classePai" value="ObjetoPersistente"/>
 	<label>Nome da Classe:</label> <input type="text" name="name"/>
 	<div id="atributos">
 	
