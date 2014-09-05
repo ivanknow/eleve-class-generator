@@ -36,7 +36,7 @@ class ConversorDAOPHP {
 			//$result .= "\n".' $this->conn '." = new CONEXAO();\n";
 		
 		
-		$result .= "\n".' $this->setConn( '."new ConnectionMysql());\n";
+		$result .= "\n".' $this->setConn( '."new ConnectionMySQLPDO());\n";
 		$result .= "\n".'$this->setTableName("'.$this->tabela.'");'."\n";
 		
 		$result .= "\n}\n";
@@ -128,7 +128,11 @@ class ConversorDAOPHP {
 
 	foreach ($this->metodos as $value) {
 
-		$result .= "\npublic function ".$value.'($obj){'."\n";
+		if($value == "criarObjeto"){
+			$result .= "\npublic function ".$value.'($array){'."\n";
+		}else{
+			$result .= "\npublic function ".$value.'($obj){'."\n";
+		}
 		
 		switch ($value) {
 			case "validarTipo":
@@ -136,6 +140,13 @@ class ConversorDAOPHP {
 			break;
 			case "validarTipoPesquisa":
 				$result .=	'return $obj instanceof '.$this->classe."Pesquisa;\n";
+			break;
+			case "criarObjeto":
+				$result .=	'return '.$this->classe.'::construct($array)'.";\n";
+			break;
+			case "mapear":
+				$result .=	'$array = $obj->toArray();'."\n";
+				$result .=	'return $array'.";\n";
 			break;
 			default:
 				$result .="\n //TODO \n";
