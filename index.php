@@ -52,7 +52,7 @@ sendData = function(){
 	
 	$.ajax({
 		
-		url:'codigo/gerador/resposta.php',
+		url:'backend/gerador/',
 		type:'POST',
 		data:$('#dataForm').serialize(),
 		success:function(result){
