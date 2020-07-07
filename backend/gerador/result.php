@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use App\Conversor\PHP\ConversorPHPEleve;
 use App\Conversor\PHP\ConversorPHPSearch;
-use App\Conversor\PHP\ConversorDAOPHP;
+use App\Conversor\PHP\ConversorPHPDAO;
 
 require __DIR__ . '/vendor/autoload.php';
 
