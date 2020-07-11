@@ -1,7 +1,7 @@
 <?php
 namespace App\Conversor\PHP;
 
-class ConversorDAOPHP {
+class ConversorPHPDAO {
 	
 	private $retorno = "";
 	

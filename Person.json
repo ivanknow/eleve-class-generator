@@ -1,0 +1,32 @@
+{
+    "id": 0,
+    "name": "Person",
+    "parentClass": "AbstractObject",
+    "attrs": [
+        {
+            "id": 0,
+            "name": "id",
+            "type": "int",
+            "nulable": "false"
+        },
+        {
+            "id": 0,
+            "name": "name",
+            "type": "string",
+            "nulable": "true"
+        },
+        {
+            "id": 0,
+            "name": "birthDay",
+            "type": "date",
+            "nulable": "true"
+        }
+    ],
+    "settings": {
+        "tostring": "true",
+        "contrutorPorArray": "true",
+        "equals": "true",
+        "DAOPHP": "true",
+        "tabela": "tb_person"
+    }
+}
