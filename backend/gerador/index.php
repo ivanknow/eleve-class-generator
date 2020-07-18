@@ -10,7 +10,7 @@ use App\Converter\PHP\ConverterClassPHP;
 use App\Converter\html\ConverterHTMLForm;
 
 use App\Domain\ClassRepresentation;
-use App\Domain\ClassRepresentationBuilder;
+use App\Builder\ClassRepresentationBuilder;
 
 require __DIR__ . '/vendor/autoload.php';
 
@@ -22,8 +22,6 @@ if(isset($_POST) && count($_POST)){
 print_r(json_encode($_POST));*/
 
 $classRep = ClassRepresentationBuilder::buildFromForm($_POST);
-
-
 
 $newConverterPHP = new ConverterClassPHP();
 $result = $newConverterPHP->process($classRep);

@@ -15,12 +15,12 @@ class ConverterHTMLForm extends AbstractConverter{
 	private $toString;
     private $toArray;
 	private $equals;
-	private $attrs;
+	private $attrs = [];
 
 	public function defineInputs(){
 		
 	}
-	
+
 	public function process($entity){
 		$this->	setup($entity);
 		return $this->	generate();

@@ -15,10 +15,10 @@ class ConverterClassPHP extends AbstractClassConverter{
 	private $toString;
     private $toArray;
 	private $equals;
-	private $attrs;
+	private $attrs = [];
 
 	public function defineInputs(){
-		
+
 	}
 
 	public function setup($classRep){
