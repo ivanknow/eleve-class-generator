@@ -23,18 +23,21 @@ print_r(json_encode($_POST));*/
 
 $classRep = ClassRepresentationBuilder::buildFromForm($_POST);
 
-print_r(json_encode($classRep));
 
-$newConverterPHP = new ConverterClassPHP($classRep);
-$result = $newConverterPHP->process();
 
-$newConverterHTMLForm = new ConverterHTMLForm($classRep);
-$result2 = $newConverterHTMLForm->process();
+$newConverterPHP = new ConverterClassPHP();
+$result = $newConverterPHP->process($classRep);
+
+$newConverterHTMLForm = new ConverterHTMLForm();
+$result2 = $newConverterHTMLForm->process($classRep);
 
 $conversorSearch = new ConversorPHPSearch($_POST);
 
 $resultSearch = $conversorSearch->gerarClasse();
 
+echo "<div class='resultWrapper well'>";
+print_r(json_encode($classRep));
+echo "</div>";
 
 echo "<div class='resultWrapper well'>".$result."</div>";
 echo "<div class='resultWrapper well'>".$result2."</div>";

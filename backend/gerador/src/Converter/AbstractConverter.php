@@ -2,5 +2,6 @@
 namespace App\Converter;
 
 abstract class AbstractConverter {
-    abstract public function process();
+    abstract public function setup($payload);
+    abstract public function process($payload);
 }

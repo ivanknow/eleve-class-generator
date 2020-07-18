@@ -17,7 +17,12 @@ class ConverterHTMLForm extends AbstractConverter{
 	private $equals;
 	private $attrs;
 
-	public function process(){
+	public function defineInputs(){
+		
+	}
+	
+	public function process($entity){
+		$this->	setup($entity);
 		return $this->	generate();
 	}
 
@@ -64,13 +69,15 @@ class ConverterHTMLForm extends AbstractConverter{
 	}
 	
 	
-    public function __construct($entity) {
+    public function __construct() {
+		
+	}
 	
+	public function setup($entity) {
 		$this->className = $entity->name;				
 		if(count($entity->attrs))
 		$this->attrs = $entity->attrs;
 	}
-			   
     
 	
 	public function generateFormTop(){

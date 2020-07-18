@@ -17,8 +17,32 @@ class ConverterClassPHP extends AbstractClassConverter{
 	private $equals;
 	private $attrs;
 
-	public function process(){
-		return $this->	generateClass();
+	public function defineInputs(){
+		
+	}
+
+	public function setup($classRep){
+		
+		$this->className = $classRep->name;
+		$this->parentClass = $classRep->parentClass;
+		
+			if(isset($classRep->settings['arrayContructor'])){
+				$this->arrayContructor = true;
+			}
+			if(isset($classRep->settings['toString'])){
+				$this->toString =  true;
+			}
+			
+			if(isset($classRep->settings['equals'])){
+				$this->equals = true;
+			}
+			
+		if(count($classRep->attrs))
+		$this->attrs = $classRep->attrs;
+	}
+	public function process($payload){
+		$this->setup($payload);
+		return $this->generateClass();
 	}
 
 	public function generateClass(){
@@ -85,24 +109,8 @@ class ConverterClassPHP extends AbstractClassConverter{
 	}
 	
 	
-    public function __construct($classRep) {
+    public function __construct() {
 	
-		$this->className = $classRep->name;
-		$this->parentClass = $classRep->parentClass;
-		
-			if(isset($classRep->settings['arrayContructor'])){
-				$this->arrayContructor = true;
-			}
-			if(isset($classRep->settings['toString'])){
-				$this->toString =  true;
-			}
-			
-			if(isset($classRep->settings['equals'])){
-				$this->equals = true;
-			}
-			
-		if(count($classRep->attrs))
-		$this->attrs = $classRep->attrs;
 	}
 			   
     
