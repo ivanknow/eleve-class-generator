@@ -6,8 +6,21 @@ use App\Domain\Attr;
 
 class ClassRepresentationBuilder {
 
-    public static function buildFromJson($json){
+    public static function buildFromJson($json_object){
 
+
+        $attrs = [];
+        if($json_object['attrs'])    
+        foreach($json_object['attrs'] as $index => $attr ){
+            $attrObj = new Attr($attr['id'],$attr['name'],$attr['type'],$attr['nullable']);
+            $attrs[] = $attrObj;
+        }
+        
+        $settings = $json_object["settings"];
+    
+        $classRep = new ClassRepresentation(0,$json_object['name'],$json_object['parentClass'], $attrs, $settings);
+        
+        return $classRep;
         /*
         TODO
         {

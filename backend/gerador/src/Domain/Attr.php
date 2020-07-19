@@ -21,7 +21,7 @@ class Attr implements JsonSerializable{
 			'id'=>	$this->id,
 			'name' =>$this->name ,
 			'type'=> $this->type,
-			'nulablle'=>$this->nulablle 
+			'nullable'=>$this->nullable 
 		];
 	}
 

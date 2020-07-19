@@ -15,13 +15,16 @@ use App\Builder\ClassRepresentationBuilder;
 require __DIR__ . '/vendor/autoload.php';
 
 
+
 if(isset($_POST) && count($_POST)){
-	
+	if(isset($_GET['type'])){
+		print_r(json_decode($_POST['fullJson'],true));
+		$classRep = ClassRepresentationBuilder::buildFromJson(json_decode($_POST['fullJson'],true));
+	}else{
+		$classRep = ClassRepresentationBuilder::buildFromForm($_POST);
+	}
 /*print_r($_POST);
-
 print_r(json_encode($_POST));*/
-
-$classRep = ClassRepresentationBuilder::buildFromForm($_POST);
 
 $newConverterPHP = new ConverterClassPHP();
 $result = $newConverterPHP->process($classRep);

@@ -7,19 +7,25 @@
             "id": 0,
             "name": "id",
             "type": "int",
-            "nulable": "false"
+            "nullable": "false"
         },
         {
             "id": 0,
             "name": "name",
             "type": "string",
-            "nulable": "true"
+            "nullable": "true"
         },
         {
             "id": 0,
             "name": "birthDay",
             "type": "date",
-            "nulable": "true"
+            "nullable": "true"
+        },
+        {
+            "id": 0,
+            "name": "age",
+            "type": "int",
+            "nullable": "true"
         }
     ],
     "settings": {

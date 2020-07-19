@@ -55,9 +55,21 @@
 				}
 			});
 		};
+
+		sendDataJson = function () {
+			$.ajax({
+				url: 'backend/gerador/?type=json',
+				type: 'POST',
+				data: $('#dataFormJson').serialize(),
+				success: function (result) {
+					$('#resposta').html(result);
+				}
+			});
+		};
 		$(function () {
 			var attrCount = 1;
 			$("#submit").click(sendData);
+			$("#submitJson").click(sendDataJson);
 			$("#addAtribute").click(addAttr);
 			$(document).on("click", ".remove", removeItem);
 		});
@@ -99,6 +111,17 @@
 			<div class="well center"><button id="submit" class="btn btn-large btn-primary">Generate</button></div>
 
 		</form>
+
+	</div>
+
+	<div>
+		<h1>JSON </h1>
+		<form action="#" name="dataForm" id="dataFormJson" method="post" onsubmit="return false">
+			<textarea name="fullJson" rows="10" cols="850"> </textarea>
+			<div class="well center"><button id="submitJson" class="btn btn-large btn-primary">Generate form JSON</button></div>
+
+		</form>
+
 
 	</div>
 
