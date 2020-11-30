@@ -23,37 +23,31 @@ if(isset($_POST) && count($_POST)){
 	}else{
 		$classRep = ClassRepresentationBuilder::buildFromForm($_POST);
 	}
-/*print_r($_POST);
-print_r(json_encode($_POST));*/
+
+$results = [];
 
 $newConverterPHP = new ConverterClassPHP();
-$result = $newConverterPHP->process($classRep);
+$results['php'] =  $newConverterPHP->process($classRep);
 
 $newConverterHTMLForm = new ConverterHTMLForm();
-$result2 = $newConverterHTMLForm->process($classRep);
+$results['html'] = $newConverterHTMLForm->process($classRep);
 
 $conversorSearch = new ConversorPHPSearch($_POST);
-
-$resultSearch = $conversorSearch->gerarClasse();
+$results["php-search"] = $conversorSearch->gerarClasse();
 
 echo "<div class='resultWrapper well'>";
 print_r(json_encode($classRep));
 echo "</div>";
 
-echo "<div class='resultWrapper well'>".$result."</div>";
-echo "<div class='resultWrapper well'>".$result2."</div>";
+
+/*echo "<div class='resultWrapper well'>".$result."</div>";
+echo "<div class='resultWrapper well'>".$result2."</div>";*/
 
 //echo "<div class='resultWrapper well'>".$resultSearch."</div>";
 
-if(isset($_POST['DAOPHP'])){
-
-	$conversorDAO = new ConversorPHPDAO($_POST);
-	
-	$resultDao = $conversorDAO->gerarClasse();
-	
-	//echo "<br/> <div class='resultWrapper well'>".$resultDao."</div>";;
-}
-
+foreach($results as $index => $result) {
+	"<div class='resultWrapper well'>".$result."</div>";
+  }
 }
 else{
 
