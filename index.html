@@ -30,11 +30,11 @@
 			var atributos = "<div class='attr' id='attr"
 				+ attrCount
 				+ "'>"
-				+ "atributo:<input type='text' name='atributeName[" + attrCount + "]' />"
-				+ "tipo:" + selectContent
-				+ "Nulo:" + selectNulo
+				+ "Attr: <input type='text' name='atributeName[" + attrCount + "]' />"
+				+ "Type: " + selectContent
+				+ "Nullable: " + selectNulo
 				+ "<button class='remove btn' id='remove"
-				+ attrCount + "'>remover</button>"
+				+ attrCount + "'>remove attr</button>"
 				+ "</div>";
 			$("#atributos").append(atributos);
 			attrCount++;
@@ -72,6 +72,11 @@
 			$("#submitJson").click(sendDataJson);
 			$("#addAtribute").click(addAttr);
 			$(document).on("click", ".remove", removeItem);
+
+			$('#myTab a').click(function (e) {
+      e.preventDefault();
+      $(this).tab('show');
+    })
 		});
 	</script>
 
@@ -80,50 +85,58 @@
 <body>
 
 	<div id="form" class="well">
+		<ul class="nav nav-tabs" id="myTab">
+			<li class="active" ><a href="#form-eleve" data-toggle="tab">Form</a></li>
+			<li><a href="#jsonform-eleve" data-toggle="tab">JSON</a></li>
+			
+		  </ul>
+		<div class="tab-content">
+			<div class="tab-pane active" id="form-eleve">
+				<form action="#" name="dataForm" id="dataForm" method="post" onsubmit="return false">
+					<div class="well">
+						<legend>Class</legend>
+						<label>Parent Class:</label> <input type="text" name="classePai" value="Object" />
+						<label>Class Name:</label> <input type="text" name="name" />
+						<div id="atributos">
+		
+						</div>
+						<div><button id="addAtribute" class="btn">Add Attr</button></div>
+					</div>
+					<div class="well">
+		
+						<legend>Methods</legend>
+		
+		
+						<label>toString: <input type="checkbox" name="tostring" value="true" /></label>
+						<label>equals: <input type="checkbox" name="equals" value="true" /></label>
+						<label>Constructor by array: <input type="checkbox" name="contrutorPorArray" value="true" /></label>
+					</div>
+					<div class="well">
+		
+						<legend>Persistence</legend>
+						<label>DAO: <input type="checkbox" name="DAOPHP" value="true" /> </label>
+						<label>Table Name:<input type="text" name="tabela" value="" /> </label>
+					</div>
+		
+		
+					<div class="well center"><button id="submit" class="btn btn-large btn-primary">Generate</button></div>
+		
+				</form>
 
-		<form action="#" name="dataForm" id="dataForm" method="post" onsubmit="return false">
-			<div class="well">
-				<legend>Class</legend>
-				<label>Parent Class:</label> <input type="text" name="classePai" value="Object" />
-				<label>Class Name:</label> <input type="text" name="name" />
-				<div id="atributos">
-
-				</div>
-				<div><button id="addAtribute" class="btn">Adicionar Atributo</button></div>
 			</div>
-			<div class="well">
+			<div class="tab-pane" id="jsonform-eleve">
+				<h1>JSON </h1>
+				<form action="#" name="dataForm" id="dataFormJson" method="post" onsubmit="return false">
+					<textarea name="fullJson" rows="10" cols="850"> </textarea>
+					<div class="well center"><button id="submitJson" class="btn btn-large btn-primary">Generate form JSON</button></div>
+		
+				</form>
 
-				<legend>Methods</legend>
-
-
-				<label>toString: <input type="checkbox" name="tostring" value="true" /></label>
-				<label>equals: <input type="checkbox" name="equals" value="true" /></label>
-				<label>construtor por array: <input type="checkbox" name="contrutorPorArray" value="true" /></label>
 			</div>
-			<div class="well">
-
-				<legend>Persistence</legend>
-				<label>DAO: <input type="checkbox" name="DAOPHP" value="true" /> </label>
-				<label>Table Name:<input type="text" name="tabela" value="" /> </label>
-			</div>
-
-
-			<div class="well center"><button id="submit" class="btn btn-large btn-primary">Generate</button></div>
-
-		</form>
+		
 
 	</div>
 
-	<div>
-		<h1>JSON </h1>
-		<form action="#" name="dataForm" id="dataFormJson" method="post" onsubmit="return false">
-			<textarea name="fullJson" rows="10" cols="850"> </textarea>
-			<div class="well center"><button id="submitJson" class="btn btn-large btn-primary">Generate form JSON</button></div>
-
-		</form>
-
-
-	</div>
 
 	<pre>
 <div id="resposta">
