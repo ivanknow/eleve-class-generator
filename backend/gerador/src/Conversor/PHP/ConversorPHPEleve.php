@@ -1,7 +1,7 @@
 <?php
 namespace App\Conversor\PHP;
 
-class ConversorPHPEleve {
+class ConversorPHPEleve { 
 	
 	private $retorno = "";
 	private $retornoSQL = "";
@@ -48,33 +48,7 @@ class ConversorPHPEleve {
 	}
 	
 	
-    public function __construct($array) {
-	
-		$this->classe = $array['name'];
-		$this->classePai = $array['classePai'];
-		
-			if(isset($array['contrutorPorArray'])){
-				$this->construtorArray = true;
-			}
-			if(isset($array['tostring'])){
-				$this->toString =  true;
-			}
-			
-			if(isset($array['equals'])){
-				$this->equals = true;
-			}
-			
-		if(isset($array['atributeName'])){
-		$this->atributosNome = $array['atributeName'] ;
-		}
-		if(isset($array['atributeType'])){
-		$this->atributosTipo = $array['atributeType'];
-		}
-		if(isset($array['atributeNull'])){
-		$this->atributosNulos = $array['atributeNull'];
-		}
-			   
-    }
+    public function __construct($array) {}
 	
 	public function geraConstrutor(){
 	

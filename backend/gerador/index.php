@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use App\Conversor\PHP\ConversorPHPEleve;
 use App\Conversor\PHP\ConversorPHPSearch;
-use App\Conversor\PHP\ConversorPHPDAO;
+use App\Conversor\PHP\ConversorDAOPHP;
 
 use App\Converter\PHP\ConverterClassPHP;
 use App\Converter\html\ConverterHTMLForm;
