@@ -82,7 +82,8 @@ class ConverterHTMLForm extends AbstractConverter{
 	
 	public function generateFormTop(){
 	
-		$result = "&ltform action='#' method='POST'&gt \n";
+		
+		$result .= "&ltform action='#' method='POST'&gt \n";
 		$result .= "&ltH1&gt".ucfirst($this->className)."&lt/H1&gt";
 		
 		return $result;
@@ -98,8 +99,8 @@ class ConverterHTMLForm extends AbstractConverter{
 		$result="";
 		foreach ($this->attrs as $attr) {
 
-		$result .= "\n &ltlabel for='".$attr->name."'&gt  ".$attr->name."&lt/label&gt\n";
-		$result .= "\n ".$attr->name." : &ltinput name='".$attr->name."'/&gt \n";
+		$result .= "\n &ltlabel for='".$attr->name."'&gt ".$attr->name."&lt/label&gt : ";
+		$result .= "  &ltinput name='".$attr->name."'/&gt \n";
 	
 		
 		}

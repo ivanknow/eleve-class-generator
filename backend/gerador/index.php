@@ -39,7 +39,8 @@ $results['dart'] = $newConverterDart->process($classRep);
 
 echo "<div class='resultWrapper well'>";
 
-print_r(json_encode($classRep));
+print_r(json_encode($classRep,JSON_PRETTY_PRINT));
+
 echo "</div>";
 
 
