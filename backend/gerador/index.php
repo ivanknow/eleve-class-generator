@@ -7,7 +7,11 @@ use App\Conversor\PHP\ConversorPHPSearch;
 use App\Conversor\PHP\ConversorDAOPHP;
 
 use App\Converter\PHP\ConverterClassPHP;
+use App\Converter\PHP\ConverterClassSlimDBPHP;
+
 use App\Converter\html\ConverterHTMLForm;
+use App\Converter\html\ConverterHTMLTable;
+
 use App\Converter\dart\ConverterClassDart;
 
 use App\Domain\ClassRepresentation;
@@ -30,8 +34,14 @@ $results = [];
 $newConverterPHP = new ConverterClassPHP();
 $results['php'] =  $newConverterPHP->process($classRep);
 
+$newConverterPHPSlim = new ConverterClassSlimDBPHP();
+$results['php_repo'] =  $newConverterPHPSlim->process($classRep);
+
 $newConverterHTMLForm = new ConverterHTMLForm();
 $results['html'] = $newConverterHTMLForm->process($classRep);
+
+$newConverterHTMLTable = new ConverterHTMLTable();
+$results['html_table'] = $newConverterHTMLTable->process($classRep);
 
 $newConverterDart = new ConverterClassDart();
 $results['dart'] = $newConverterDart->process($classRep);

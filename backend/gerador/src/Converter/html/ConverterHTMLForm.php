@@ -83,7 +83,7 @@ class ConverterHTMLForm extends AbstractConverter{
 	public function generateFormTop(){
 	
 		
-		$result .= "&ltform action='#' method='POST'&gt \n";
+		$result = "&ltform action='#' method='POST'&gt \n";
 		$result .= "&ltH1&gt".ucfirst($this->className)."&lt/H1&gt";
 		
 		return $result;

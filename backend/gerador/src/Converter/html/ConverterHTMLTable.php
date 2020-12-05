@@ -2,7 +2,7 @@
 namespace App\Converter\html;
 use App\Converter\AbstractConverter;
 
-class ConverterHTMLForm extends AbstractConverter{
+class ConverterHTMLTable extends AbstractConverter{
 	
 	private $outcome = "";
 	
@@ -17,16 +17,6 @@ class ConverterHTMLForm extends AbstractConverter{
 	private $equals;
 	private $attrs = [];
 	
-	public function tag($tag,$content,$tagAttrs){
-		$returned =  "&lt".$tag;
-		foreach ($this->tagAttrs as $key => $tagAttr) {
-			$returned .= "".$key."='".$tagAttr."'";
-		}
-		$returned .= "&gt";
-		$returned .= $content;
-		$returned .= "&lt/".$tag."&gt";
-
-	}
 
 	public function defineInputs(){
 		
@@ -40,12 +30,12 @@ class ConverterHTMLForm extends AbstractConverter{
 	public function generate(){
 	
 		$result = "";
+
+
 		
-		$result .= $this->generateFormTop();
-		//Construtor
-		$result .= $this->generateFields();
-		//Get and Set
-		$result .= $this->generateFormBottom();
+		$result .= $this->tag("table",
+		$this->tag("tr",
+		$this->tag("td","Test")));
 		
 		
 		$result .= "\n\n";
@@ -93,9 +83,6 @@ class ConverterHTMLForm extends AbstractConverter{
 	
 	public function generateTableTop(){
 	
-		$this->tag("table",
-		$this->tag("tr",
-		$this->tag("td","Test")));
 		$result = "&ltform action='#' method='POST'&gt \n";
 		$result .= "&ltH1&gt".ucfirst($this->className)."&lt/H1&gt";
 		
