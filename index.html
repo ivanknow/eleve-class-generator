@@ -74,9 +74,19 @@
 			$(document).on("click", ".remove", removeItem);
 
 			$('#myTab a').click(function (e) {
-      e.preventDefault();
-      $(this).tab('show');
-    })
+				e.preventDefault();
+				$(this).tab('show');
+			});
+
+			$('#resultTab a').click(function (e) {
+				e.preventDefault();
+				$(this).tab('show');
+			});
+
+			$(document).on("click", "#resultTab a", function () {
+				e.preventDefault();
+				$(this).tab('show');
+			});
 		});
 	</script>
 
@@ -86,10 +96,10 @@
 
 	<div id="form" class="well">
 		<ul class="nav nav-tabs" id="myTab">
-			<li class="active" ><a href="#form-eleve" data-toggle="tab">Form</a></li>
+			<li class="active"><a href="#form-eleve" data-toggle="tab">Form</a></li>
 			<li><a href="#jsonform-eleve" data-toggle="tab">JSON</a></li>
-			
-		  </ul>
+
+		</ul>
 		<div class="tab-content">
 			<div class="tab-pane active" id="form-eleve">
 				<form action="#" name="dataForm" id="dataForm" method="post" onsubmit="return false">
@@ -98,71 +108,74 @@
 						<label>Parent Class:</label> <input type="text" name="classePai" value="Object" />
 						<label>Class Name:</label> <input type="text" name="name" />
 						<div id="atributos">
-		
+
 						</div>
 						<div><button id="addAtribute" class="btn">Add Attr</button></div>
 					</div>
 					<div class="well">
-		
+
 						<legend>Methods</legend>
-		
-		
+
+
 						<label>toString: <input type="checkbox" name="tostring" value="true" /></label>
 						<label>equals: <input type="checkbox" name="equals" value="true" /></label>
-						<label>Constructor by array: <input type="checkbox" name="contrutorPorArray" value="true" /></label>
+						<label>Constructor by array: <input type="checkbox" name="contrutorPorArray"
+								value="true" /></label>
 					</div>
 					<div class="well">
-		
+
 						<legend>Persistence</legend>
 						<label>DAO: <input type="checkbox" name="DAOPHP" value="true" /> </label>
 						<label>Table Name:<input type="text" name="tabela" value="" /> </label>
 					</div>
-		
-		
-					<div class="well center"><button id="submit" class="btn btn-large btn-primary">Generate</button></div>
-		
+
+
+					<div class="well center"><button id="submit" class="btn btn-large btn-primary">Generate</button>
+					</div>
+
 				</form>
 
 			</div>
 			<div class="tab-pane" id="jsonform-eleve">
 				<h1>JSON </h1>
 				<form action="#" name="dataForm" id="dataFormJson" method="post" onsubmit="return false">
-					<textarea name="fullJson" rows="10" cols="850"> </textarea>
-					<div class="well center"><button id="submitJson" class="btn btn-large btn-primary">Generate form JSON</button></div>
-		
+					<textarea name="fullJson" rows="10" cols="850" style="width: 95%; height: 218px;"> </textarea>
+					<div class="well center"><button id="submitJson" class="btn btn-large btn-primary">Generate form
+							JSON</button></div>
+
 				</form>
 
 			</div>
-		
-
-	</div>
 
 
-	<pre>
+		</div>
+
+
+		<pre>
 <div id="resposta">
 
 </div>
 </pre>
-	<div id="selectContent" class="hide">
-		<select>
-			<option value="int">Integer</option>
-			<option value="string">String</option>
-			<option value="number">Number</option>
-			<option value="date">Date</option>
-			<option value="blob">Blob</option>
-			<option value="object">Object</option>
-			<option value="Array">Array</option>
-		</select>
+		<div id="selectContent" class="hide">
+			<select>
+				<option value="int">Integer</option>
+				<option value="String">String</option>
+				<option value="double">Number</option>
+				<option value="date">Date</option>
+				<option value="blob">Blob</option>
+				<option value="Object">Object</option>
+				<option value="Array">Array</option>
+			</select>
 
-	</div>
+		</div>
 
-	<div id="selectNulo" class="hide">
-		<select>
-			<option selected="selected" value="true">SIM</option>
-			<option value="false">NAO</option>
-		</select>
+		<div id="selectNulo" class="hide">
+			<select>
+				<option selected="selected" value="true">SIM</option>
+				<option value="false">NAO</option>
+			</select>
 
-	</div>
+		</div>
 
 </body>
 

@@ -8,6 +8,7 @@ use App\Conversor\PHP\ConversorDAOPHP;
 
 use App\Converter\PHP\ConverterClassPHP;
 use App\Converter\html\ConverterHTMLForm;
+use App\Converter\dart\ConverterClassDart;
 
 use App\Domain\ClassRepresentation;
 use App\Builder\ClassRepresentationBuilder;
@@ -32,22 +33,34 @@ $results['php'] =  $newConverterPHP->process($classRep);
 $newConverterHTMLForm = new ConverterHTMLForm();
 $results['html'] = $newConverterHTMLForm->process($classRep);
 
-$conversorSearch = new ConversorPHPSearch($_POST);
-$results["php-search"] = $conversorSearch->gerarClasse();
+$newConverterDart = new ConverterClassDart();
+$results['dart'] = $newConverterDart->process($classRep);
+
 
 echo "<div class='resultWrapper well'>";
+
 print_r(json_encode($classRep));
 echo "</div>";
 
 
-/*echo "<div class='resultWrapper well'>".$result."</div>";
-echo "<div class='resultWrapper well'>".$result2."</div>";*/
 
-//echo "<div class='resultWrapper well'>".$resultSearch."</div>";
+echo "<ul class=\"nav nav-tabs\" id=\"resultTab\">";
+foreach($results as $index => $result) {
+	echo "<li class=\"\" '> <a href=\"#tab-".$index."\" data-toggle=\"tab\">".$index."</a></li>";
+	
+  }
+  echo "</ul>";
+
+echo "<div class=\"tab-content\">";
 
 foreach($results as $index => $result) {
-	"<div class='resultWrapper well'>".$result."</div>";
+	
+	echo "<div class='resultWrapper well tab-pane ' id='tab-".$index."'>";
+	echo "<h2>".$index."</h2>";
+	echo $result;
+	echo "</div>";
   }
+echo "</div>";
 }
 else{
 

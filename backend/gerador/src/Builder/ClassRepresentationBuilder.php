@@ -61,18 +61,18 @@ class ClassRepresentationBuilder {
     public static function buildFromForm($array){
 
     $attrs = [];
-    if($array['atributeName'])    
+    if(isset($array['atributeName']))    
     foreach($array['atributeName'] as $index => $attrName ){
         $attrObj = new Attr(0,$attrName,$array['atributeType'][$index],$array['atributeNull'][$index]);
         $attrs[] = $attrObj;
     }
     
     $settings = []; 
-    $settings ['toString'] = $array['tostring'];
-    $settings['arrayConstructor'] =  $array['contrutorPorArray'];
-    $settings ['equals'] = $array ['equals'];
-    $settings['DAO'] = $array['DAOPHP'];
-    $settings['table'] = $array['tabela'];
+    $settings ['toString'] = isset($array['tostring'])?$array['tostring']:false;
+    $settings['arrayConstructor'] =  isset($array['contrutorByArray'])?$array['contrutorByArray']:false;
+    $settings ['equals'] = isset($array ['equals'])?$array ['equals']:false;
+    $settings['DAO'] = isset($array['DAOPHP'])?$array['DAOPHP']:"";
+    $settings['table'] = isset($array['tabela'])?$array['tabela']:"";
 
     $classRep = new ClassRepresentation(0,$array['name'],$array['classePai'], $attrs, $settings);
     

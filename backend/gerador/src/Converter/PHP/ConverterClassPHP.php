@@ -82,32 +82,6 @@ class ConverterClassPHP extends AbstractClassConverter{
 		return $result;
 		}
 	
-	private function getAttrType($type){
-
-		switch ($type){
-			case "int":
-				return " = 0";
-				break;
-			case "string":
-			case "blob":
-				return "= \"\" ";
-				break;
-			case "number":
-				return "= 0.0";
-				break;
-			case "date":
-				return " = \"0000-00-00 00:00:00\"";
-				break;
-			case "object":
-				return '= null';
-				break;
-			case "Array":
-				return '= array()';
-				break;
-				
-		}
-	}
-	
 	
     public function __construct() {
 	
@@ -157,7 +131,7 @@ class ConverterClassPHP extends AbstractClassConverter{
 		
 		//contrutor por array
 
-		if($this->construtorArray){
+		if (isset($this->construtorArray)){
 		$result .= "\npublic".' static function construct($array){';
 		
 		$result .="\n".'$obj'." = new ".$this->className."();\n";

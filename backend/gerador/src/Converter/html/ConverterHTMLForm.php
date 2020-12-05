@@ -95,9 +95,10 @@ class ConverterHTMLForm extends AbstractConverter{
 	public function generateFields(){
 	
 
-	
+		$result="";
 		foreach ($this->attrs as $attr) {
 
+		$result .= "\n &ltlabel for='".$attr->name."'&gt  ".$attr->name."&lt/label&gt\n";
 		$result .= "\n ".$attr->name." : &ltinput name='".$attr->name."'/&gt \n";
 	
 		
@@ -110,7 +111,7 @@ class ConverterHTMLForm extends AbstractConverter{
 	public function generateFormBottom(){
 	
 	$result = "&ltbutton&gt Submit &lt/button&gt";
-	$result .= "&lt/form&gt";
+	$result .= "\n&lt/form&gt";
 	return $result; 	
 	
 	}
