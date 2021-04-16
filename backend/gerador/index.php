@@ -14,6 +14,8 @@ use App\Converter\html\ConverterHTMLTable;
 
 use App\Converter\dart\ConverterClassDart;
 
+use App\Converter\slim_framework\ConverterSlim;
+
 use App\Domain\ClassRepresentation;
 use App\Builder\ClassRepresentationBuilder;
 
@@ -45,6 +47,9 @@ $results['html_table'] = $newConverterHTMLTable->process($classRep);
 
 $newConverterDart = new ConverterClassDart();
 $results['dart'] = $newConverterDart->process($classRep);
+
+$converterSlim = new ConverterSlim();
+$results['slim_framework'] = $converterSlim->process($classRep);
 
 
 echo "<div class='resultWrapper well'>";
