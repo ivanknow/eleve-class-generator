@@ -4,6 +4,7 @@ namespace App\Converter\slim_framework;
 
 use App\Converter\AbstractConverter;
 use App\Converter\slim_framework\domain\ConverterDomainClass;
+use App\Converter\slim_framework\domain\ConverterErrorHandleClass;
 
 
 class ConverterSlimDomain extends AbstractConverter{
@@ -28,7 +29,11 @@ class ConverterSlimDomain extends AbstractConverter{
 		$converterDomainClass = new ConverterDomainClass();
 		$result .= $converterDomainClass->process($this->payload);
 
-		$result .= "\n /*not found error*/";
+		$result .= "\n /*NOT FOUND CLASS ERROR*/";
+
+		$converterErrorHandleClass = new ConverterErrorHandleClass();
+		$result .= $converterErrorHandleClass->process($this->payload);
+		
 		$result .= "\n /*abstract repo class*/";
 		
 		
